@@ -1,0 +1,6 @@
+
+services:
+     mjs.twig.pplyFilter:
+         class: MJS\TwigApplyFilter\Twig\ApplyFilterExtension
+         tags:
+            - { name: twig.extension }

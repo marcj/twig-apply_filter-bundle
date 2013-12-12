@@ -1,0 +1,21 @@
+{
+    "name": "marcj/twig-applyFilter-bundle",
+    "description": "Dynamic twig filter calls",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc J. Schmidt",
+            "email": "marc@kryn.org",
+            "homepage": "http://marcjschmidt.de"
+        }
+    ],
+    "require-dev": {
+        "twig/twig": "~1.0"
+    },
+    "target-dir": "MJS/TwigApplyFilter",
+    "autoload": {
+        "psr-0": {
+            "MJS\\TwigApplyFilter": ""
+        }
+    }
+}
