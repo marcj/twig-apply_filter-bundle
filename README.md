@@ -24,7 +24,7 @@ Installation
 ### Install via composer
 
 ```bash
-composer.phar require marcj/marcj/twig-applyFilter-bundle
+composer.phar require marcj/twig-apply_filter-bundle
 ```
 
 ### Activate bundle

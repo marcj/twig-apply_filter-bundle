@@ -1,5 +1,5 @@
 {
-    "name": "marcj/twig-applyFilter-bundle",
+    "name": "marcj/twig-apply_filter-bundle",
     "description": "Dynamic twig filter calls",
     "license": "MIT",
     "authors": [
