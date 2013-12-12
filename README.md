@@ -3,8 +3,7 @@ Twig apply_filter
 
 This filter allows you to call dynamic filters in twig.
 
-[![Build Status](https://travis-ci.org/marcj/twig-applyFilter-bundle.png)](https://travis-ci.org/marcj/twig-applyFilter-bundle)
-
+[![Build Status](https://travis-ci.org/marcj/twig-apply_filter-bundle.png?branch=master)](https://travis-ci.org/marcj/twig-apply_filter-bundle)
 Examples
 -------
 
