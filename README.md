@@ -51,3 +51,6 @@ public function registerBundles()
     );
 }
 ```
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/marcj/twig-apply_filter-bundle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
