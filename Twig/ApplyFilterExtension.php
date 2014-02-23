@@ -26,14 +26,11 @@ class ApplyFilterExtension extends \Twig_Extension
 
     public function applyFilter(\Twig_Environment $env, $context = array(), $value, $filters)
     {
-        $name = 'apply_filter_' . md5($filters);
+        $twigStringLoader = new \Twig_Environment(new \Twig_Loader_String());
+        $response = $twigStringLoader->render(
+          sprintf('{{ %s|%s }}', key(compact('value')), $filters)
+        );
 
-        $template = sprintf('{{ %s|%s }}', $name, $filters);
-        $template = $env->loadTemplate($template);
-
-        $context[$name] = $value;
-
-        return $template->render($context);
+        return $response;
     }
-
 }
