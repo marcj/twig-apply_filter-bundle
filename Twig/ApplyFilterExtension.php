@@ -31,6 +31,9 @@ class ApplyFilterExtension extends \Twig_Extension
         $fs = new Filesystem();
 
         //set the needed path
+        if (!$env->getCache()) {
+            throw new \UnexpectedValueException('twig cache is not configured');
+        }
         $template_dir_path = $env->getCache().'/apply_filter';
         $template_file_name = $filters.'.html.twig';
         $template_path = $template_dir_path.'/'.$template_file_name;
