@@ -2,6 +2,8 @@
 
 namespace MJS\TwigApplyFilter\Twig;
 
+use Symfony\Component\Filesystem\Filesystem;
+
 class ApplyFilterExtension extends \Twig_Extension
 {
     public function getName()
@@ -26,14 +28,36 @@ class ApplyFilterExtension extends \Twig_Extension
 
     public function applyFilter(\Twig_Environment $env, $context = array(), $value, $filters)
     {
-        $name = 'apply_filter_' . md5($filters);
+        $fs = new Filesystem();
 
-        $template = sprintf('{{ %s|%s }}', $name, $filters);
-        $template = $env->loadTemplate($template);
+        //set the needed path
+        $template_dir_path = $env->getCache().'/apply_filter';
+        $template_file_name = $filters.'.html.twig';
+        $template_path = $template_dir_path.'/'.$template_file_name;
 
-        $context[$name] = $value;
+        //create dir for templates in twig cache
+        if(!$fs->exists($template_dir_path))
+            $fs->mkdir($template_dir_path);
 
-        return $template->render($context);
+        if(!$fs->exists($template_path))
+        {
+            //write the new template if first call
+            $template = sprintf('{{ value|%s }}', $filters);
+            file_put_contents($template_path,$template);
+        }
+
+        //store the old loader (not sure that is necessary)
+        $old_loader = $env->getLoader();
+
+        //use file loader
+        $loader = new \Twig_Loader_Filesystem($template_dir_path);
+        $env->setLoader($loader);
+
+        $rendered = $env->render($template_file_name,array("value" => $value));
+
+        //reload the previous loader
+        $env->setLoader($old_loader);
+
+        return $rendered;
     }
-
 }
