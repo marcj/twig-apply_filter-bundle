@@ -10,6 +10,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
     public function testBase($template, $output){
 
         $twig = new \Twig_Environment(new \Twig_Loader_String(), array('cache' => false, 'autoescape' => false));
+        $twig->setCache(sys_get_temp_dir());
         $twig->addExtension(new \MJS\TwigApplyFilter\Twig\ApplyFilterExtension());
 
         $template = $twig->loadTemplate($template);
